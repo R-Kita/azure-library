@@ -24,6 +24,7 @@
     line-height: 100px;
     font-family: 'Major Mono Display', monospace;
     font-size: 30px;
+    text-decoration: none;
 }
 
 .post {
