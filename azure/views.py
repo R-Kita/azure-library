@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def novel_list(request):
+    return render(request, 'azure/novel_list.html', {})
