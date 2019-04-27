@@ -1,1 +1,15 @@
-hello world
+{% extends 'azure/base.html' %}
+
+{% block content %}
+        <div class="contents container">
+            <div class="col-md-8">
+                {% for post in posts %}
+                    <div class="post">
+                        <div class="date">{{ post.published_date }}</div>
+                        <h1><a href="">{{ post.title }}</a></h1>
+                        <div class="">{{ post.text }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+{% endblock %}

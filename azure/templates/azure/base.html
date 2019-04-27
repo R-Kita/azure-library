@@ -1,0 +1,20 @@
+{% load static %}
+<html>
+    <head>
+        <title>Aaure Library</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/azure.css' %}">
+    </head>
+    <body>
+        <div class="page-header">
+            <div class="main-logo">
+                <h1><a href="">Azure Library</a></h1>
+            </div>
+        </div>
+
+        {% block content %}
+        {% endblock %}
+
+    </body>
+</html>
