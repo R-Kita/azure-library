@@ -6,7 +6,13 @@
                 <div class="col-md-8 post">
                     <div class="post-header">
                         <div class="post-title">
-                            <h1><a class="post-title-link" href={% url 'novel_detail' pk=post.pk %}>{{ post.title }}</a></h1>
+                            <h1>
+                                {% if curate %}
+                                    <a class="post-title-link" href={% url 'curate_novel_detail' pk=post.pk %}>{{ post.title }}</a>
+                                {% else %}
+                                    <a class="post-title-link" href={% url 'novel_detail' pk=post.pk %}>{{ post.title }}</a>
+                                {% endif %}
+                            </h1>
                         </div>
                         <div class="post-info">
                             <div class="date"><p>{{ post.published_date }}</p></div>

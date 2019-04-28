@@ -15,3 +15,7 @@ def novel_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'azure/novel_detail.html', {'post': post})
 
+def curate_novel_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'azure/novel_detail.html', {'post': post, 'curate': 'valid'})
+

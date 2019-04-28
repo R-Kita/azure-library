@@ -5,7 +5,11 @@
                 <div class="col-md-8 post">
                     <div class="post-header">
                         <div class="post-title">
-                            <h1>{{ post.title }}</h1>
+                            <h1>{{ post.title }} 
+                            {% if curate %}
+                                <a class="edit" href=''>[edit]</a>
+                            {% endif %}
+                            </h1>
                         </div>
                         <div class="post-info">
                             <div class="date"><p>{{ post.published_date }}</p></div>

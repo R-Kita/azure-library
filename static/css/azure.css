@@ -70,6 +70,16 @@
     color: #828282;
 }
 
+.edit{
+    color: #828282;
+    font-size:18px;
+}
+
+.post-edit{
+    color: #828282;
+    padding-left: 30px;
+}
+
 .post-text {
     padding-top: 20px;
     text-align: justify;
