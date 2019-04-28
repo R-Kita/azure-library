@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Major+Mono+Display|Muli" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Cutive+Mono" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/azure.css' %}">
     </head>
     <body>
@@ -15,6 +16,13 @@
                        <h1><a href={% url 'novel_list' %}>Azure Library</a></h1>
                    </div>
                 </div>
+                {% if curate %}
+                <div class="col-md-4">
+                   <div class="curate-logo">
+                       <h1><a href={% url 'curate_novel_list' %}>curation</a></h1>
+                   </div>
+                </div>
+                {% endif %}
             </div>
         </div>
 

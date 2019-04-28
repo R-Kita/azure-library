@@ -18,6 +18,14 @@
     text-decoration: none;
 }
 
+.curate-logo h1 a {
+    color: white;
+    line-height: 120px;
+    font-family: 'Cutive Mono', monospace;
+    font-size: 20px;
+    text-decoration: none;
+}
+
 .post {
     margin-top: 0px;
     margin-bottom: 0px;
