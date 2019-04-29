@@ -5,10 +5,16 @@ from .forms import PostForm
 
 def novel_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    for post in posts:
+        text = post.text[:1000].split()
+        post.text = " ".join(text[:100]) + "..."
     return render(request, 'azure/novel_list.html', {'posts': posts})
 
 def curate_novel_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    for post in posts:
+        text = post.text[:1000].split()
+        post.text = " ".join(text[:100]) + "..."
     return render(request, 'azure/novel_list.html', {'posts': posts, 'curate': 'valid'})
 
 def novel_detail(request, pk):
