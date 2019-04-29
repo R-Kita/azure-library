@@ -31,3 +31,9 @@ def curate_novel_edit(request, pk):
     else:
         form  = PostForm(instance=post)
         return render(request, 'azure/novel_edit.html', {'form': form, 'curate': 'valid'})
+
+def curate_novel_new(request):
+    form = PostForm()
+    return render(request, 'azure/novel_edit.html', {'form': form, 'curate': 'valid'})
+
+

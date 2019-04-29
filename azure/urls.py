@@ -7,4 +7,5 @@ urlpatterns = [
     path('curate/', views.curate_novel_list, name='curate_novel_list'),
     path('curate/novel/<int:pk>/', views.curate_novel_detail, name='curate_novel_detail'),
     path('curate/novel/<int:pk>/edit/', views.curate_novel_edit, name='curate_novel_edit'),
+    path('curate/novel/new', views.curate_novel_new, name='curate_novel_new'),
 ]
