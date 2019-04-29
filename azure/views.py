@@ -33,7 +33,16 @@ def curate_novel_edit(request, pk):
         return render(request, 'azure/novel_edit.html', {'form': form, 'curate': 'valid'})
 
 def curate_novel_new(request):
-    form = PostForm()
-    return render(request, 'azure/novel_edit.html', {'form': form, 'curate': 'valid'})
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('curate_novel_detail', pk=post.pk)
+    else:
+        form = PostForm()
+        return render(request, 'azure/novel_edit.html', {'form': form, 'curate': 'valid'})
 
 
