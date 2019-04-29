@@ -7,7 +7,7 @@
                         <div class="post-title">
                             <h1>{{ post.title }} 
                             {% if curate %}
-                                <a class="edit" href=''>[edit]</a>
+                                <a class="edit" href={% url 'curate_novel_edit' pk=post.pk %}>[edit]</a>
                             {% endif %}
                             </h1>
                         </div>
