@@ -121,6 +121,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 20px;
     line-height: 23px;
+    text-indent: 30px
 }
 
 .post-form textarea, .post-form input{
