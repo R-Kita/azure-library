@@ -12,7 +12,11 @@
                             </h1>
                         </div>
                         <div class="post-info">
-                            <div class="date"><p>{{ post.published_date }}</p></div>
+                            <div class="date"><p>
+                                {% if post.published_date %}
+                                    {{ post.published_date }}
+                                {% endif %}
+                            </p></div>
                         </div>
                     </div>
                     <div class="post-text">
