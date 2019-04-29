@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from django.utils import timezone
 from .models import Post
 from .forms import PostForm
@@ -21,5 +21,13 @@ def curate_novel_detail(request, pk):
 
 def curate_novel_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    form  = PostForm(instance=post)
-    return render(request, 'azure/novel_edit.html', {'form': form, 'curate': 'valid'})
+    if request.method == "POST":
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            return redirect('curate_novel_detail', pk=post.pk)
+    else:
+        form  = PostForm(instance=post)
+        return render(request, 'azure/novel_edit.html', {'form': form, 'curate': 'valid'})
