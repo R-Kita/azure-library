@@ -8,6 +8,9 @@ class Post(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+    topic_id_1st = models.IntegerField(blank=True, null=True)
+    topic_id_2st = models.IntegerField(blank=True, null=True)
+    topic_id_3st = models.IntegerField(blank=True, null=True)
 
     def publish(self):
         published_date = timezone.now()
