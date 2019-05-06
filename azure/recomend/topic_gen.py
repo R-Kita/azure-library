@@ -2,7 +2,7 @@ import gensim
 
 def topic_gen(documents):
     ## Load model
-    lda_model = gensim.models.ldamodel.LdaModel.load('recomend/lda.model')
+    lda_model = gensim.models.ldamodel.LdaModel.load('azure/recomend/lda.model')
     dictionary = lda_model.id2word
     
     ## Transform docs into corpus

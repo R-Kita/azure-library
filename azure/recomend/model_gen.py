@@ -5,7 +5,7 @@ import gensim
 def model_gen(documents):
     ## Prepare stop words
     # stop_words = "for a of the and to in".split()
-    with open("recomend/stop_words.txt") as f:
+    with open("azure/recomend/stop_words.txt") as f:
         stop_words = f.read()
         stop_words = stop_words.split()
     ## for develop
@@ -36,7 +36,7 @@ def model_gen(documents):
     
     ## Growing lda model
     lda = gensim.models.ldamodel.LdaModel(corpus=corpus, num_topics=5, id2word=dictionary)
-    lda.save('recomend/lda.model')
+    lda.save('azure/recomend/lda.model')
     print("################## Recomendation Engine: Topic model files (lda.model ect...) generated.")
     
 
