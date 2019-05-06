@@ -67,6 +67,11 @@
     padding-bottom: 90px;
 }
 
+.rec {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
 .post-header {
     display: grid;
     grid-template-rows: auto;
@@ -81,6 +86,10 @@
     color: black;
     font-family: 'Muli', sans-serif;
     font-size: 33px;
+}
+
+.rec-title h1 {
+    font-size: 20px;
 }
 
 .post-title-link {
@@ -124,6 +133,14 @@
     text-indent: 30px
 }
 
+.rec-text {
+    font-size: 16px;
+}
+
 .post-form textarea, .post-form input{
     width: 100%;
+}
+
+.border-top {
+    border-top: 1px solid gray;
 }
