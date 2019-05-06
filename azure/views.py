@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404, get_list_or_404
 from django.utils import timezone
 from .models import Post
 from .forms import PostForm
@@ -21,7 +21,11 @@ def curate_novel_list(request):
 
 def novel_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'azure/novel_detail.html', {'post': post})
+    recs = Post.objects.filter(topic_id_1st=post.topic_id_1st)[:3]
+    for rec in recs:
+        text = rec.text[:1000].split()
+        rec.text = " ".join(text[:100]) + "..."
+    return render(request, 'azure/novel_detail.html', {'post': post, 'recs': recs})
 
 def curate_novel_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
