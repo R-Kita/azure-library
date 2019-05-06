@@ -14,7 +14,7 @@
                     <div class="post-info">
                         <div class="date"><p>
                             {% if post.published_date %}
-                                {{ post.published_date }}
+                                {{ post.published_date | date:"Y M j"}}
                             {% endif %}
                         </p></div>
                     </div>
@@ -23,7 +23,7 @@
                     <div class="">{{ post.text | linebreaks }}</div>
                 </div>
             </div>
-            {% if True %}
+            {% if recs %}
                 <div class="col-md-8 border-top">
                     <div class=""><h4>If you like {{ post.title }}, you may like novels below.</h4></div>
                 </div>
@@ -43,7 +43,7 @@
                         <div class="post-info">
                             <div class="date"><p>
                                 {% if rec.published_date %}
-                                    {{ rec.published_date }}
+                                    {{ rec.published_date | date:"Y M j"}}
                                 {% endif %}
                             </p></div>
                         </div>
