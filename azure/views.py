@@ -29,7 +29,11 @@ def novel_detail(request, pk):
 
 def curate_novel_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'azure/novel_detail.html', {'post': post, 'curate': 'valid'})
+    recs = Post.objects.all().filter(topic_id_1st=post.topic_id_1st).exclude(pk=post.pk)[:3]
+    for rec in recs:
+        text = rec.text[:1000].split()
+        rec.text = " ".join(text[:100]) + "..."
+    return render(request, 'azure/novel_detail.html', {'post': post, 'recs': recs, 'curate': 'valid'})
 
 def curate_novel_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
