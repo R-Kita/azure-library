@@ -21,7 +21,7 @@ def curate_novel_list(request):
 
 def novel_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    recs = Post.objects.filter(topic_id_1st=post.topic_id_1st)[:3]
+    recs = Post.objects.all().filter(topic_id_1st=post.topic_id_1st).exclude(pk=post.pk)[:3]
     for rec in recs:
         text = rec.text[:1000].split()
         rec.text = " ".join(text[:100]) + "..."
