@@ -32,7 +32,7 @@ def model_gen(documents):
     corpus = [dictionary.doc2bow(text) for text in texts]
     
     ## Growing lda model
-    lda = gensim.models.ldamodel.LdaModel(corpus=corpus, num_topics=2, id2word=dictionary)
+    lda = gensim.models.ldamodel.LdaModel(corpus=corpus, num_topics=4, id2word=dictionary)
     lda.save('azure/recomend/lda.model')
     print("############ Recomendation Engine: Topic model files (lda.model ect...) generated.")
     print("############", end=" ")
