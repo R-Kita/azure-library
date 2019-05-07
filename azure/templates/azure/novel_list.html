@@ -9,6 +9,7 @@
                             <h1>
                                 {% if curate %}
                                     <a class="post-title-link" href={% url 'curate_novel_detail' pk=post.pk %}>{{ post.title }}</a>
+                                    <span class="topic-id">Topic ID: {{ post.topic_id_1st }}</span>
                                 {% else %}
                                     <a class="post-title-link" href={% url 'novel_detail' pk=post.pk %}>{{ post.title }}</a>
                                 {% endif %}

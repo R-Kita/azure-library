@@ -101,6 +101,15 @@
     text-decoration: none;
 }
 
+.topic-id {
+    color: gray;
+    font-size: 12px;
+    border: solid 1px;
+    border-radius: 2px;
+    margin-left: 10px;
+    padding: 2px;
+}
+
 .post-info {
     justify-self: end;
     align-self: end;
