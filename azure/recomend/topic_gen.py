@@ -11,6 +11,7 @@ def topic_gen(documents):
     
     ## for develop
     for topic_prob in lda_model[corpus]:
+        print("############", end=' ')
         print(topic_prob)
 
     ## Topic prediction and sort

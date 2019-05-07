@@ -8,9 +8,6 @@ def model_gen(documents):
     with open("azure/recomend/stop_words.txt") as f:
         stop_words = f.read()
         stop_words = stop_words.split()
-    ## for develop
-    print("Stop words: " + str(stop_words))
-
 
     ## Transform docs into list of words
     ## Remove stop words
@@ -37,7 +34,7 @@ def model_gen(documents):
     ## Growing lda model
     lda = gensim.models.ldamodel.LdaModel(corpus=corpus, num_topics=5, id2word=dictionary)
     lda.save('azure/recomend/lda.model')
-    print("################## Recomendation Engine: Topic model files (lda.model ect...) generated.")
+    print("################ Recomendation Engine: Topic model files (lda.model ect...) generated.")
     
 
 if __name__ == '__main__':

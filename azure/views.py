@@ -44,8 +44,6 @@ def curate_novel_edit(request, pk):
             post.author = request.user
             topic_line_up = topic_gen([post.text])
             post.topic_id_1st = topic_line_up[0]
-            post.topic_id_2nd = topic_line_up[1]
-            post.topic_id_3rd = topic_line_up[2]
             post.save()
             return redirect('curate_novel_detail', pk=post.pk)
     else:
@@ -61,12 +59,20 @@ def curate_novel_new(request):
             post.published_date = timezone.now()
             topic_line_up = topic_gen([post.text])
             post.topic_id_1st = topic_line_up[0]
-            post.topic_id_2nd = topic_line_up[1]
-            post.topic_id_3rd = topic_line_up[2]
             post.save()
             return redirect('curate_novel_detail', pk=post.pk)
     else:
         form = PostForm()
         return render(request, 'azure/novel_edit.html', {'form': form, 'curate': 'valid'})
 
-
+def curate_retopic(request):
+    all_posts = Post.objects.all()
+    all_docs = [post.text for post in all_posts]
+    model_gen(all_docs)
+    for post in all_posts:
+        topic_line_up = topic_gen([post.text])
+        print(f"############ Title: {post.title}", end=' ')
+        print(topic_line_up)
+        post.topic_id_1st = topic_line_up[0]
+        post.save()
+    return redirect('curate_novel_list')
