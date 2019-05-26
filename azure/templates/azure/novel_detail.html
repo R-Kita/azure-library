@@ -1,57 +1,74 @@
 {% extends 'azure/base.html' %}
 
 {% block content %}
-        <div class="contents container">
-            <div class="col-md-8 post">
-                <div class="post-header">
-                    <div class="post-title">
-                        <h1>{{ post.title }} 
-                        {% if curate %}
-                            <a class="edit" href={% url 'curate_novel_edit' pk=post.pk %}>[edit]</a>
+
+  <main>
+    <div class="container">
+
+      <!-- #################### novel detail #################### -->
+      <div class="row card-my">
+        <div class="col col-lg-8">
+          <div class="card border-0">
+            <div class="card-body">
+              <div class="post-header">
+                  {% if curate %}
+                      <a class="card-title post-title-link" href={% url 'curate_novel_detail' pk=post.pk %}>{{ post.title }}</a>
+                      <span class="topic-id">Topic ID: {{ post.topic_id_1st }}</span>
+                  {% else %}
+                      <a class="card-title post-title-link" href={% url 'novel_detail' pk=post.pk %}>{{ post.title }}</a>
+                  {% endif %}
+                <div class="card-subtitle mb-2 text-right date-color">
+                    <div class="date">
+                      <p>
+                        {% if post.published_date %}
+                            {{ post.published_date | date:"Y M j"}}
                         {% endif %}
-                        </h1>
-                    </div>
-                    <div class="post-info">
-                        <div class="date"><p>
-                            {% if post.published_date %}
-                                {{ post.published_date | date:"Y M j"}}
-                            {% endif %}
-                        </p></div>
-                    </div>
+                      </p>
+                  </div>
                 </div>
-                <div class="post-text">
-                    <div class="">{{ post.text | linebreaks }}</div>
-                </div>
+              </div>
+              <p class="card-text post-text">{{ post.text | linebreaksbr }}</p>
             </div>
-            {% if recs %}
-                <div class="col-md-8 border-top">
-                    <div class=""><h4>If you like {{ post.title }}, you may like novels below.</h4></div>
-                </div>
-            {% endif %}
-            {% for rec in recs %}
-                <div class="col-md-8 post rec">
-                    <div class="post-header">
-                        <div class="post-title rec-title">
-                            <h1>
-                                {% if curate %}
-                                    <a class="post-title-link" href={% url 'curate_novel_detail' pk=rec.pk %}>{{ rec.title }}</a>
-                                {% else %}
-                                    <a class="post-title-link" href={% url 'novel_detail' pk=rec.pk %}>{{ rec.title }}</a>
-                                {% endif %}
-                            </h1>
-                        </div>
-                        <div class="post-info">
-                            <div class="date"><p>
-                                {% if rec.published_date %}
-                                    {{ rec.published_date | date:"Y M j"}}
-                                {% endif %}
-                            </p></div>
-                        </div>
-                    </div>
-                    <div class="post-text rec-text">
-                        <div class="">{{ rec.text | linebreaksbr }}</div>
-                    </div>
-                </div>
-            {% endfor %}
+          </div>
         </div>
+      </div>
+
+      <!-- #################### recommended novels #################### -->
+      {% if recs %}
+          <div class="col-lg-8 border-top pt-2">
+              <div class=""><p>If you like <strong>{{ post.title }}</strong>, you may like novels below.</p></div>
+          </div>
+      {% endif %}
+      {% for rec in recs %}
+        <div class="row rec-card-my">
+          <div class="col col-lg-8">
+            <div class="card border-0">
+              <div class="card-body">
+                <div class="post-header">
+                    {% if curate %}
+                        <a class="card-title post-title-link rec-title" href={% url 'curate_novel_detail' pk=rec.pk %}>{{ rec.title }}</a>
+                        <span class="topic-id">Topic ID: {{ post.topic_id_1st }}</span>
+                    {% else %}
+                        <a class="card-title post-title-link rec-title" href={% url 'novel_detail' pk=rec.pk %}>{{ rec.title }}</a>
+                    {% endif %}
+                  <div class="card-subtitle mb-2 text-right date-color">
+                      <div class="date rec-date">
+                        <p>
+                          {% if rec.published_date %}
+                              {{ rec.published_date | date:"Y M j"}}
+                          {% endif %}
+                        </p>
+                    </div>
+                  </div>
+                </div>
+                <p class="card-text post-text rec-text">{{ rec.text | linebreaksbr }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+  </main>
+
 {% endblock %}

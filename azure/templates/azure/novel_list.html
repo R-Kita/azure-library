@@ -1,32 +1,38 @@
 {% extends 'azure/base.html' %}
 
 {% block content %}
-        <div class="contents container">
-            {% for post in posts %}
-                <div class="col-md-8 post">
-                    <div class="post-header">
-                        <div class="post-title">
-                            <h1>
-                                {% if curate %}
-                                    <a class="post-title-link" href={% url 'curate_novel_detail' pk=post.pk %}>{{ post.title }}</a>
-                                    <span class="topic-id">Topic ID: {{ post.topic_id_1st }}</span>
-                                {% else %}
-                                    <a class="post-title-link" href={% url 'novel_detail' pk=post.pk %}>{{ post.title }}</a>
-                                {% endif %}
-                            </h1>
-                        </div>
-                        <div class="post-info">
-                            <div class="date"><p>
-                                {% if post.published_date %}
-                                    {{ post.published_date | date:"Y M j"}}
-                                {% endif %}
-                            </p></div>
-                        </div>
+
+  <main>
+    <div class="container">
+      {% for post in posts %}
+        <div class="row card-my">
+          <div class="col col-lg-8">
+            <div class="card border-0">
+              <div class="card-body">
+                <div class="post-header">
+                    {% if curate %}
+                        <a class="card-title post-title-link" href={% url 'curate_novel_detail' pk=post.pk %}>{{ post.title }}</a>
+                        <span class="topic-id">Topic ID: {{ post.topic_id_1st }}</span>
+                    {% else %}
+                        <a class="card-title post-title-link" href={% url 'novel_detail' pk=post.pk %}>{{ post.title }}</a>
+                    {% endif %}
+                  <div class="card-subtitle mb-2 text-right date-color">
+                      <div class="date">
+                        <p>
+                          {% if post.published_date %}
+                              {{ post.published_date | date:"Y M j"}}
+                          {% endif %}
+                        </p>
                     </div>
-                    <div class="post-text">
-                        <div class="">{{ post.text | linebreaksbr }}</div>
-                    </div>
+                  </div>
                 </div>
-            {% endfor %}
+                <p class="card-text post-text">{{ post.text | linebreaksbr }}</p>
+              </div>
+            </div>
+          </div>
         </div>
+      {% endfor %}
+    </div>
+  </main>
+
 {% endblock %}

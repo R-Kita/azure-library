@@ -1,45 +1,76 @@
 {% load static %}
-<html>
-    <head>
-        <title>Aaure Library</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Major+Mono+Display|Muli" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Cutive+Mono" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'css/azure.css' %}">
-    </head>
-    <body>
-        <div class="page-header">
-            <div class="container">
-                <div class="col-md-8">
-                   <div class="main-logo">
-                       <h1><a href={% url 'novel_list' %}>Azure Library</a></h1>
-                   </div>
-                </div>
-                {% if curate %}
-                <div class="col-md-4">
-                   <div class="curate-logo">
-                       <h1>
-                           <a href={% url 'curate_novel_list' %}>curation</a>
-                           <a href={% url 'curate_novel_new' %}>new</a>
-                           <a href={% url 'curate_retopic' %}>retopic</a>
-                       </h1>
-                   </div>
-                </div>
-                {% endif %}
-            </div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/azure.css' %}">
+<!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Cutive+Mono|Major+Mono+Display|Muli&display=swap" rel="stylesheet">
+  <title>Azure Library</title>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href={% url 'novel_list' %}>Azure Library</a>
+        {% if curate %}
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        {% endif %}
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            {% if curate %}
+               <!-- <a href={% url 'curate_novel_list' %}>curation</a>
+               <a href={% url 'curate_novel_new' %}>new</a>
+               <a href={% url 'curate_retopic' %}>retopic</a> -->
+               <li class="nav-item"><a class="nav-link" href={% url 'curate_novel_list' %}>curation home</a></li>
+               <li class="nav-item"><a class="nav-link" href={% url 'curate_novel_new' %}>new</a></li>
+               <li class="nav-item"><a class="nav-link" href={% url 'curate_retopic' %}>retopic</a></li>
+            {% endif %}
+          </ul>
         </div>
+      </div>
+    </nav>
+  </header>
 
-        {% block content %}
-        {% endblock %}
 
-        <div class="page-footer">
-            <div class="container">
-                <div class="copy-rights">
-                    <p>Azure Library all rights reserved.</p>
-                </div>
+<!-- delete this <mian> after transplant -->
+  <!-- <main>
+    <div class="container">
+      <div class="row card-my">
+        <div class="col col-lg-8">
+          <div class="card border-none">
+            <div class="card-body">
+              <div class="">
+                <h4 class="card-title">Maihime</h4>
+                <h6 class="card-subtitle mb-2 text-muted text-right">2019 Apr 28</h6>
+              </div>
+              <p class="card-text">
+                Vol. 1 I woke up while I thought I was drowsy. Then, a strange noise is heard to the next room. At first I had no idea where the sound came from or where it came from, but as I was listening, I was gradually getting into the idea of ​​being in my ear. It must be that you have something to eat and drink in daikon radish or anything with yamawashi wasabi grated. I definitely knew that was the case. Even so, I can not imagine what I need to do now, and I am honoring daikon radish in...
+              </p>
             </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </main> -->
 
-    </body>
+  {% block content %}
+  {% endblock %}
+
+
+  <footer>
+    <div class="footer bg-secondary">
+      <div class="text-white text-center">Azure Library</div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
 </html>
