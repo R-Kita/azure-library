@@ -8,25 +8,26 @@
         <div class="row card-my">
           <div class="col col-lg-8">
             <div class="card border-0">
-              <div class="card-body">
-                <div class="post-header">
+              <div class="card-body px-0">
+                <div class="row post-header">
+                  <div class="col-12 col-sm-7">
                     {% if curate %}
-                        <a class="card-title post-title-link" href={% url 'curate_novel_detail' pk=post.pk %}>{{ post.title }}</a>
-                        <span class="topic-id">Topic ID: {{ post.topic_id_1st }}</span>
+                      <a class="post-title post-title-link" href={% url 'curate_novel_detail' pk=post.pk %}>{{ post.title }}</a>
                     {% else %}
-                        <a class="card-title post-title-link" href={% url 'novel_detail' pk=post.pk %}>{{ post.title }}</a>
+                      <a class="post-title post-title-link" href={% url 'novel_detail' pk=post.pk %}>{{ post.title }}</a>
                     {% endif %}
-                  <div class="card-subtitle mb-2 text-right date-color">
-                      <div class="date">
-                        <p>
-                          {% if post.published_date %}
-                              {{ post.published_date | date:"Y M j"}}
-                          {% endif %}
-                        </p>
-                    </div>
+                  </div>
+                  <!-- d-flex align-items-end -->
+                  <div class="col-12 col-sm-5 card-subtitle text-left text-sm-right align-self-end mt-1 date-color">
+                    {% if curate %}
+                      <span class="topic-id">Topic ID: {{ post.topic_id_1st }}</span>
+                    {% endif %}
+                    {% if post.published_date %}
+                      <span>{{ post.published_date | date:"Y M j"}}</span>
+                    {% endif %}
                   </div>
                 </div>
-                <p class="card-text post-text">{{ post.text | linebreaksbr }}</p>
+                <p class="card-text post-text mt-4">{{ post.text | linebreaksbr }}</p>
               </div>
             </div>
           </div>

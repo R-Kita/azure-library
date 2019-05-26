@@ -173,10 +173,10 @@
   margin-top: 60px;
   margin-bottom: 160px;
 }
-.post-title-link {
-    color: black;
-    font-family: 'Muli', sans-serif;
-    font-size: 33px;
+.post-title {
+  color: black;
+  font-family: 'Muli', sans-serif;
+  font-size: 33px;
 }
 .post-title-link:hover {
     color: gray;
@@ -187,7 +187,7 @@
     font-size: 12px;
     border: solid 1px;
     border-radius: 2px;
-    margin-left: 10px;
+    margin-right: 10px;
     padding: 2px;
 }
 .date-color {
